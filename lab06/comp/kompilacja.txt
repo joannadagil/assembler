@@ -1,0 +1,7 @@
+nasm -o procedure.obj -f obj procedure.asm
+bcc32 interface.c procedure.obj
+
+nasm -o procedure.o -f coff procedure.asm
+gcc procedure.o interface.c -o program.exe
+lub
+i686-w64-mingw32-gcc interface.c procedure.o -o program.exe

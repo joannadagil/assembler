@@ -1,32 +1,33 @@
 #include <stdio.h>
 
-	extern void _tablica (int *a); 
+extern double _fun(double x, unsigned long n);
 
-	void tablica (int *a);
-
-	int tab[4];
-
-	int main()
-	{
-		int i;
-		for (i=0;i<4;i++)
-			tab[i]=2*(i+1)+5;
-		for (i=0;i<4;i++)
-			printf("%d ", tab[i]);
-		tablica(tab);
-		printf("\n");
-		for (i=0;i<4;i++)
-			printf("%d ", tab[i]);
-		return 0;
-	}
-
-/*	void wskaznik (int *a)
-	{
-		//*a=45;
-	}
-*/
+extern double fun(double x, unsigned long n);
 
 
-// nasm -o fun.obj -f obj fun.asm
+int main(void)
+{
+    double x;
+    unsigned long n;
+    double res;
 
-// .\bcc32.exe interface.c fun.obj
+    printf("This program computes e^x, given an argument x and the accuracy of the computation.\n");
+
+    while (1) {
+
+        printf("Enter the argument x (Ctrl+Z then Enter to exit): ");
+        if (scanf("%lf", &x) != 1)
+            break;
+
+        printf("Enter the accuracy n (number of terms): ");
+        if (scanf("%lu", &n) != 1)
+            break;
+
+        res = fun(x, n);
+
+        printf("e^x (Taylor, n=%lu) = %.15f\n", n, res);
+
+    }
+
+    return 0;
+}

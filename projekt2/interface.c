@@ -33,6 +33,8 @@ int main(void)
 
     }
 
+    printf("Program terminated.\n");
+
     return 0;
 }
 
